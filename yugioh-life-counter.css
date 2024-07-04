@@ -1,0 +1,71 @@
+.ygo-counter-container {
+    background: #282828;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 600px;
+    margin: auto;
+    font-family: 'Arial', sans-serif;
+}
+
+.ygo-counter-container h1 {
+    color: #FFD700; /* Gold color */
+    margin-bottom: 20px;
+}
+
+.player-container {
+    background: #1E1E1E;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.lp-display {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.lp-btn {
+    background: #FFD700;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.lp-btn:hover {
+    background: #FFA500; /* Darker gold */
+}
+
+.dice-coin-container {
+    margin-top: 20px;
+}
+
+#roll-dice, #flip-coin {
+    background: #FFD700;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#roll-dice:hover, #flip-coin:hover {
+    background: #FFA500; /* Darker gold */
+}
+
+#dice-result, #coin-result {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+@media (max-width: 600px) {
+    .lp-btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
