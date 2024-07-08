@@ -9,7 +9,7 @@
 
 function ygo_life_counter_enqueue_scripts() {
     wp_enqueue_style('ygo-life-counter-css', plugin_dir_url(__FILE__) . 'yugioh-life-counter.css');
-    wp_enqueue_script('ygo-life-counter-js', plugin_dir_url(__FILE__) . 'yugioh-life-counter.js', array('jquery'), null, true);
+    wp_enqueue_script('jquery'); // Ensure jQuery is enqueued
 }
 add_action('wp_enqueue_scripts', 'ygo_life_counter_enqueue_scripts');
 
@@ -28,23 +28,29 @@ function ygo_life_counter_shortcode() {
             <button class="lp-btn" data-lp-change="1">+1</button>
             <button class="lp-btn" data-lp-change="-1">-1</button>
         </div>
-        <div class="player-container">
-            <h2>Player 2</h2>
-            <div class="lp-display" data-lp="8000">LP: 8000</div>
-            <button class="lp-btn" data-lp-change="1000">+1000</button>
-            <button class="lp-btn" data-lp-change="-500">-500</button>
-            <button class="lp-btn" data-lp-change="500">+500</button>
-            <button class="lp-btn" data-lp-change="-1000">-1000</button>
-            <button class="lp-btn" data-lp-change="1">+1</button>
-            <button class="lp-btn" data-lp-change="-1">-1</button>
-        </div>
-        <div class="dice-coin-container">
-            <button id="roll-dice">Roll Dice</button>
-            <div id="dice-result">Dice Result: </div>
-            <button id="flip-coin">Flip Coin</button>
-            <div id="coin-result">Coin Result: </div>
-        </div>
     </div>
+    <script>
+        jQuery(document).ready(function($) {
+            console.log("Document ready. Initializing event handlers.");
+
+            $('.lp-btn').off('click').on('click', function() {
+                var change = parseInt($(this).data('lp-change'), 10);
+                var $lpDisplay = $(this).siblings('.lp-display');
+                var currentLP = parseInt($lpDisplay.attr('data-lp'), 10);
+
+                console.log("Button clicked. Change: ", change);
+                console.log("Current LP: ", currentLP);
+
+                var newLP = currentLP + change;
+
+                console.log("New LP: ", newLP);
+
+                // Update the data attribute and text
+                $lpDisplay.attr('data-lp', newLP);
+                $lpDisplay.text('LP: ' + newLP);
+            });
+        });
+    </script>
     <?php
     return ob_get_clean();
 }
